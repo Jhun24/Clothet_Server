@@ -50,7 +50,7 @@
 
     userData Json(user 스키마 참조)
     
-### /auth/signup
+### /auth/register
 
 > require
 
