@@ -119,4 +119,18 @@ function facebook(app,randomstring,postModel,userClothetModel) {
         });
     });
 
+    app.get('/fb/userList',(req,res)=>{
+        var token = req.query.userToken;
+
+        userClothetModel.find({"userToken":token},(err,model)=>{
+           if(err) throw err;
+           if(model.length == 0){
+                res.send(404);
+           }
+           else{
+                res.json(model);
+           }
+        });
+    });
+
 }
