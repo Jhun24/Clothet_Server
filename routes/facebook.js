@@ -24,6 +24,9 @@ function facebook(app,randomstring,postModel) {
         var like = "0";
         var title = req.body.title;
         var content = req.body.content;
+        var category = req.body.category;
+        var size = req.body.size;
+        var color = req.body.color;
 
         var token = randomstring.generate();
         var imgName = req.file["filename"];
@@ -91,4 +94,29 @@ function facebook(app,randomstring,postModel) {
         }
 
     });
+
+    app.post('/fb/add',upload.single('images'),(req,res)=>{
+        var img = req.file["filename"];
+        var name = req.body.name;
+        var category = req.body.category;
+        var size = req.body.size;
+        var color = req.body.color;
+
+        var token = randomstring.generate();
+
+        var saveShopModel = new shopModel({
+            "name":name,
+            "category":category,
+            "size":size,
+            "color":color,
+            "img":img,
+            "clothToken":token
+        });
+
+        saveShopModel.save((err,model)=>{
+            if(err) throw err;
+            res.json(model);
+        });
+    });
+
 }

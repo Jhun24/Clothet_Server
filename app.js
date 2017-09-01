@@ -47,7 +47,10 @@ var post = mongoose.Schema({
     content:String,
     title:String,
     img:String,
-    like:String
+    like:String,
+    category:String,
+    color:String,
+    size:String
 });
 
 var shop  = mongoose.Schema({
