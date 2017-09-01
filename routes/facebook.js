@@ -1,6 +1,6 @@
 module.exports = facebook;
 
-function facebook(app,randomstring,postModel) {
+function facebook(app,randomstring,postModel,userClothetModel) {
     "use strict";
 
     var multer = require('multer');
@@ -102,18 +102,18 @@ function facebook(app,randomstring,postModel) {
         var size = req.body.size;
         var color = req.body.color;
 
-        var token = randomstring.generate();
+        var token = req.body.userToken;
 
-        var saveShopModel = new shopModel({
+        var saveClothetModel = new userClothetModel({
             "name":name,
             "category":category,
             "size":size,
             "color":color,
             "img":img,
-            "clothToken":token
+            "userToken":token
         });
 
-        saveShopModel.save((err,model)=>{
+        saveClothetModel.save((err,model)=>{
             if(err) throw err;
             res.json(model);
         });

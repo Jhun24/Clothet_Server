@@ -34,11 +34,19 @@
     size:String
     img:String
     token:String
-    
+
+### userClothet
+
+    userToken:String
+    name:String
+    color:String
+    size:String
+    category:String
+    img:String
 
 # /auth
 
-### /auth/login
+### POST : /auth/login
 
 > require
 
@@ -50,7 +58,7 @@
 
     userData Json(user 스키마 참조)
     
-### /auth/register
+### POST : /auth/register
 
 > require
 
@@ -66,7 +74,7 @@
     
 # facebook
 
-### /fb/write
+### POST : /fb/write
 
 > require
 
@@ -80,7 +88,7 @@
 
     Server code : 200
     
-### /fb/list
+### GET : /fb/list
 
 > require
     
@@ -92,7 +100,7 @@
     
     postData (post Schema 참고
 
-### /fb/ddabap
+### GET : /fb/ddabap
 
 > require
     
@@ -105,10 +113,31 @@
     글이 없을시 Server code 404
     
     성공시 Server code 200
+
+### POST : /fb/save
+
+> require 
     
+    name : 옷 이름
+    
+    color : 옷 색상
+    
+    category : 옷 카테고리
+    
+    size : 옷 크기
+    
+    userToke : 유저 토큰
+    
+    imageFile : (name : images)
+    
+> response    
+    
+    userClothetData (json) (userClothet 참고) 
+    
+
 # /SHOP
 
-### /shop/list
+### GET : /shop/list
 
 > require 
     
@@ -128,7 +157,7 @@
 > require
     쓰기 귀찮
     
-### /shop/save
+### POST : /shop/save
 
 > require
 

@@ -71,13 +71,23 @@ var saveCloth = mongoose.Schema({
     token:String
 });
 
+var userClothet = mongoose.Schema({
+    userToken:String,
+    name:String,
+    color:String,
+    size:String,
+    category:String,
+    img:String
+});
+
 var userModel = mongoose.model('userModel',user);
 var postModel = mongoose.model('postModel',post);
 var shopModel = mongoose.model('shopModel',shop);
 var saveClothModel = mongoose.model('saveClothModel',saveCloth);
+var userClothetModel = mongoose.model('userClothetModel',userClothet);
 
 require('./routes/auth')(app,randomstring,userModel);
-require('./routes/facebook')(app,randomstring,postModel);
+require('./routes/facebook')(app,randomstring,postModel,userClothetModel);
 require('./routes/route')(app);
 require('./routes/shop')(app,randomstring,shopModel,saveClothModel);
 // catch 404 and forward to error handler
