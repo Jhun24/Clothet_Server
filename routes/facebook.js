@@ -22,18 +22,11 @@ function facebook(app,randomstring,postModel,userClothetModel) {
     app.post('/fb/write', upload.single('images'),  function(req, res) {
         console.log(req.file["filename"]);
         var like = "0";
-        var title = req.body.title;
-        var content = req.body.content;
-        var category = req.body.category;
-        var size = req.body.size;
-        var color = req.body.color;
 
         var token = randomstring.generate();
         var imgName = req.file["filename"];
 
         var savePostModel = new postModel({
-            "title":title,
-            "content":content,
             "token":token,
             "img":imgName,
             "like":like

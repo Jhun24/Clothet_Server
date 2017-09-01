@@ -44,13 +44,8 @@ var user = mongoose.Schema({
 
 var post = mongoose.Schema({
     token:String,
-    content:String,
-    title:String,
     img:String,
-    like:String,
-    category:String,
-    color:String,
-    size:String
+    like:String
 });
 
 var shop  = mongoose.Schema({
