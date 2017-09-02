@@ -27,59 +27,59 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-mongoose.connect('mongodb://localhost:27017/no') ;
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-        console.log("Mongo On");
-
-});
-
-var user = mongoose.Schema({
-    name:String,
-    id:String,
-    password:String,
-    token:String
-});
-
-var post = mongoose.Schema({
-    token:String,
-    img:String,
-    like:String
-});
-
-var shop  = mongoose.Schema({
-    name:String,
-    category:String,
-    color:String,
-    size:String,
-    img:String,
-    clothToken:String
-});
-
-var saveCloth = mongoose.Schema({
-    name:String,
-    category:String,
-    color:String,
-    size:String,
-    img:String,
-    token:String
-});
-
-var userClothet = mongoose.Schema({
-    userToken:String,
-    name:String,
-    color:String,
-    size:String,
-    category:String,
-    img:String
-});
-
-var userModel = mongoose.model('userModel',user);
-var postModel = mongoose.model('postModel',post);
-var shopModel = mongoose.model('shopModel',shop);
-var saveClothModel = mongoose.model('saveClothModel',saveCloth);
-var userClothetModel = mongoose.model('userClothetModel',userClothet);
+// mongoose.connect('mongodb://localhost:27017/no') ;
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function callback () {
+//         console.log("Mongo On");
+//
+// });
+//
+// var user = mongoose.Schema({
+//     name:String,
+//     id:String,
+//     password:String,
+//     token:String
+// });
+//
+// var post = mongoose.Schema({
+//     token:String,
+//     img:String,
+//     like:String
+// });
+//
+// var shop  = mongoose.Schema({
+//     name:String,
+//     category:String,
+//     color:String,
+//     size:String,
+//     img:String,
+//     clothToken:String
+// });
+//
+// var saveCloth = mongoose.Schema({
+//     name:String,
+//     category:String,
+//     color:String,
+//     size:String,
+//     img:String,
+//     token:String
+// });
+//
+// var userClothet = mongoose.Schema({
+//     userToken:String,
+//     name:String,
+//     color:String,
+//     size:String,
+//     category:String,
+//     img:String
+// });
+//
+// var userModel = mongoose.model('userModel',user);
+// var postModel = mongoose.model('postModel',post);
+// var shopModel = mongoose.model('shopModel',shop);
+// var saveClothModel = mongoose.model('saveClothModel',saveCloth);
+// var userClothetModel = mongoose.model('userClothetModel',userClothet);
 //
 // require('./routes/auth')(app,randomstring,userModel);
 // require('./routes/facebook')(app,randomstring,postModel,userClothetModel);
@@ -100,6 +100,37 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+});
+
+// app.get('/clothList',(req,res)=>{
+//     "use strict";
+//     console.log("Hello")
+//     // var arr = new Array();
+//     // arr[0]["name"] = "http://soylatte.kr:8080/img/tshirt1.png"
+//     // arr[0]["class"] = true;
+//     //
+//     // arr[1]["name"] = "http://soylatte.kr:8080/img/tshirt2.png"
+//     // arr[1]["class"] = true;
+//     //
+//     // arr[2]["name"] = "http://soylatte.kr:8080/img/pents1.png"
+//     // arr[2]["class"] = false;
+//     //
+//     // arr[3]["name"] = "http://soylatte.kr:8080/img/pents2.png"
+//     // arr[3]["class"] = false;
+//     //
+//     // arr[4]["name"] = "http://soylatte.kr:8080/img/pents3.png"
+//     // arr[4]["class"] = false;
+//     //
+//     // arr[5]["name"] = "http://soylatte.kr:8080/img/pents4.png"
+//     // arr[5]["class"] = false;
+//     //
+//     // res.json(arr);
+//     res.send(200);
+// });
+
+app.get('/clothList',(req,res)=>{
+    "use strict";
+   res.send(200);
 });
 
 module.exports = app;
